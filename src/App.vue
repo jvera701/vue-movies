@@ -14,7 +14,23 @@ function changeRating(index, number) {
   <h1 class="flex bg-slate-900 w-screen h-screen justify-center items-center">
     <h2 class="flex flex-row">
       <div v-for="(movie, mIndex) in movies" class="w-72 pr-3" :key="movie.id">
-        <img :src="movie.image" class="w-72 rounded-tl-md rounded-tr-md h-96" />
+        <div class="relative">
+          <img
+            :src="movie.image"
+            class="w-72 rounded-tl-md rounded-tr-md h-96"
+          />
+          <div class="h-10 w-10 absolute top-0 right-0">
+            <StarIcon
+              class="w-10 h-10"
+              :class="[movie.rating ? 'text-yellow-500' : 'text-gray-500']"
+            />
+            <div
+              class="text-white absolute inset-0 flex items-center justify-center text-center"
+            >
+              {{ movie.rating ? movie.rating : "-" }}
+            </div>
+          </div>
+        </div>
         <div
           class="flex flex-col bg-white p-2 h-56 justify-between rounded-bl-md rounded-br-md"
         >
